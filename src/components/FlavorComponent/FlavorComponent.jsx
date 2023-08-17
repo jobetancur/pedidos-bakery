@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import FlavorElement from "./FlavorElement";
+import FlavorElement from "../FlavorComponent/FlavorElement";
 
 function FlavorComponent({ changeFlavorPrice }) {
 

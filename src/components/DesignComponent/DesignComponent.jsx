@@ -38,7 +38,7 @@ function DesignComponent({ changeDesignPrice }) {
     const [ inputPrice, setInputPrice ] = useState(0.00)
     // const [ designTypes, setDesignTypes ] = useState([]);
     const [ sum, setSum ] = useState({});
-    const [ totalSum, setTotalSum ] = useState();
+    // const [ totalSum, setTotalSum ] = useState();
 
 
     const handleDesignChange = (e) => {
@@ -112,9 +112,9 @@ function DesignComponent({ changeDesignPrice }) {
     }, [designState, numberSheets, inputPrice])
 
     useEffect(() => {
-        const sumatoria = Object.values(sum).reduce((primero, segundo) => primero + segundo, 0);
-        setTotalSum(sumatoria);
-        changeDesignPrice(sumatoria)
+        const totalPrices = Object.values(sum).reduce((primero, segundo) => primero + segundo, 0);
+        // setTotalSum(totalPrices);
+        changeDesignPrice(totalPrices)
     }, [sum])
 
     
