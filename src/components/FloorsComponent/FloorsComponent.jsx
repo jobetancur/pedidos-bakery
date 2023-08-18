@@ -236,10 +236,7 @@ function FloorsComponent() {
 
   return (
     <div className="container">
-      <h1 className="my-3">Pruebas</h1>
       <h3 className="my-3">{ `Total: $${totalSum ? totalSum.toFixed(2) : 0 }` }</h3>
-
-      <hr className="mb-3 mt-5"/>
       <form onSubmit={handleSubmit}>
         <h3 className="my-3">Pisos</h3>
         <select 
