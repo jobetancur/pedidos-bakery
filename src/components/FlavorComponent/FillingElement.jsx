@@ -107,7 +107,7 @@ function FillingElement({
         <>
             <select 
                 name={filling.toString()}
-                className="form-select mb-3"
+                className="form-select mb-2 w-full p-2 border rounded-2xl border-black border-solid text-black outline-0"
                 value={selectedFilling}
                 onChange={fillingChange}
             >
@@ -123,9 +123,9 @@ function FillingElement({
             {
                 viewFillingSize && (
                     <>
-                        <h4>Tamaños disponibles</h4>
+                        <h4 className="my-2 font-semibold">Tamaños disponibles</h4>
                         <select
-                            className="form-select mb-4"
+                            className="form-select mb-4 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0"
                             name="sizeFilling"
                             value={size}
                             onChange={handleSizeChange}

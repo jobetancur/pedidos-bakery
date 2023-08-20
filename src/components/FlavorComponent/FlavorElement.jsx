@@ -12,7 +12,7 @@ function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange }) {
   return (
     <>
         <select
-            className="form-select mb-2"
+            className="form-select mb-2 w-full p-2 border rounded-2xl border-black border-solid text-black outline-0"
             name="flavor"
             value={localFlavor}
             onChange={handleLocalFlavorSelectChange}

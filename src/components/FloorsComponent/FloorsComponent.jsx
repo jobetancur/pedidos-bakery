@@ -236,11 +236,15 @@ function FloorsComponent() {
 
   return (
     <div className="container">
-      <h3 className="my-3">{ `Total: $${totalSum ? totalSum.toFixed(2) : 0 }` }</h3>
+      <h3 className="text-2xl my-2 mb-4 font-semibold"
+      >
+        { `Total: $${totalSum ? totalSum.toFixed(2) : 0 }` }
+      </h3>
+      <hr />
       <form onSubmit={handleSubmit}>
-        <h3 className="my-3">Pisos</h3>
+        <h3 className="my-3 text-2xl">Pisos</h3>
         <select 
-          className="form-select mb-2" 
+          className="form-select mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0 "
           name="floors" 
           value={floors}
           onChange={handleFloorsChange}
@@ -254,7 +258,7 @@ function FloorsComponent() {
         {/* -------------------------- */}
         {/* Selector de tipo de pastel */}
         <select
-          className="form-select mb-2" 
+          className="form-select mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0" 
           name="flavor"
           value={type} 
           onChange={handleTypeChange} 
@@ -278,14 +282,14 @@ function FloorsComponent() {
               return (
                 <React.Fragment key={cake.id}>
                   <input 
-                    className="form-control mb-2" 
+                    className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0" 
                     placeholder="# personas" 
                     type="number" 
                     name="people" 
                     onChange={handlePeopleChange}
                   />
                   <textarea 
-                    className="form-control" 
+                    className="form-control w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0" 
                     type="text" 
                     name="floors" 
                     placeholder="especificaciones"
@@ -306,7 +310,7 @@ function FloorsComponent() {
             } else if (type === cake.type) {
                 return (
                   <select
-                    className="form-select"
+                    className="form-select mb-2 w-full py-2 px-4 border rounded-2xl border-black border-solid text-black outline-0"
                     name="design"
                     value={design}
                     onChange={handleDesignChange}
@@ -343,7 +347,7 @@ function FloorsComponent() {
 
         <button 
           type="submit" 
-          className="btn btn-primary my-3"
+          className="my-5 bg-[#ED614A] py-2 px-5 text-white rounded-3xl"
         >
           Enviar
         </button>

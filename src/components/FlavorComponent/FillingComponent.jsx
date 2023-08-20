@@ -41,7 +41,7 @@ function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
 
   return (
     <>
-        <h3 className="mb-3 mt-2">Relleno</h3>
+        <h3 className="mb-3 mt-2 text-2xl">Relleno</h3>
 
         {
             addFilling.map((addFillingIndex) => (
@@ -58,13 +58,13 @@ function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
         }
 
         <button 
-            className="btn btn-success mr-3"
+            className="bg-[#ED614A] py-2 px-4 rounded-3xl text-white"
             onClick={addNewFilling}
         >
             Agregar sabor
         </button>
         <button 
-            className="btn btn-warning m-3"
+            className="m-3 bg-[#c2c0c0] py-2 px-4 rounded-3xl text-white"
             onClick={deleteFilling}
         >
             Quitar sabor
