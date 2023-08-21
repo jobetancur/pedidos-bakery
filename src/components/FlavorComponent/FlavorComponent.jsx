@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import FlavorElement from "../FlavorComponent/FlavorElement";
 
-function FlavorComponent({ changeFlavorPrice }) {
+function FlavorComponent({ changeFlavorPrice, size, setSize, selectedFlavors, setSelectedFlavors, addFlavor, setAddFlavor }) {
 
     const flavorsList = [
         {id: 1, flavor: 'vainilla', price: 0.00},
@@ -12,11 +12,7 @@ function FlavorComponent({ changeFlavorPrice }) {
         {id: 6, flavor: 'red velvet por 1/4', price: 15.00},
         {id: 7, flavor: 'pan capacillo por 1/4', price: 10.00},
     ]
-
-    const [ addFlavor, setAddFlavor ] = useState([1]);
-    const [ size, setSize ] = useState('0');
-    const [selectedFlavors, setSelectedFlavors] = useState([]);
-
+    
     const handleSizeChange = (e) => {
         setSize(e.target.value)
     }
@@ -100,16 +96,19 @@ function FlavorComponent({ changeFlavorPrice }) {
                     flavorsList={flavorsList}
                     handleFlavorSelectChange={(e) => handleFlavorSelectChange(e, addFlavorIndex - 1)}
                     flavor={selectedFlavors[addFlavorIndex - 1] || '0'}
+                    setSelectedFlavors={setSelectedFlavors}
                 />
             ))
         }
         <button 
+            type="button"
             className="bg-[#ED614A] py-2 px-4 rounded-3xl text-white"
             onClick={addNewFlavor}
         >
             Agregar sabor
         </button>
-        <button 
+        <button
+            type="button" 
             className="m-3 bg-[#c2c0c0] py-2 px-4 rounded-3xl text-white"
             onClick={deleteFlavor}
         >

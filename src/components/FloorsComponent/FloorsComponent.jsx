@@ -141,20 +141,69 @@ function FloorsComponent() {
       const [ design, setDesign ] = useState('0');
       const [ designTypes, setDesignTypes ] = useState([]);
       const [ people, setPeople ] = useState(0);
+      const [ details, setDetails ] = useState('');
+      const [ addFlavor, setAddFlavor ] = useState([1]);
+      const [ size, setSize ] = useState('0');
+      const [ selectedFlavors, setSelectedFlavors ] = useState([]);
+      const [ selectedFilling, setSelectedFilling ] = useState('0');
+      const [ sizeFilling, setSizeFilling ] = useState('0');
+      const [ customDesign, setCustomDesign ] = useState('0'); //!
+      const [ optionDesign, setOptionDesign ] = useState('0'); //!
+      const [ numberSheets, setNumberSheets ] = useState(0); //!
+      const [ descriptionDesign, setDescriptionDesign ] = useState(''); //!
+      const [ inputPrice, setInputPrice ] = useState(0.00); //!
+      const [ chongosDesign, setChongosDesign ] = useState(false);
+      const [ clientCustom, setClientCustom ] = useState(false);
+      const [ sheetsState, setSheetsState ] = useState(false);
       const [ flavorPrice, setFlavorPrace ] = useState(0.00);
       const [ sizePrice, setSizePrice ] = useState(0.00);
       const [ basicFillingPrice, setBasicFillingPrice ] = useState(0.00);
       const [ customDesignPrice, setCustomDesignPrice ] = useState(0.00);
-    
+      const [ addOrder, setAddOrder ] = useState([]);
+
       const handleSubmit = (e) => {
         e.preventDefault();
+
+        const newOrder = {
+          id: Date.now(),
+          floors: floors,
+          typeCake: type,
+          design: design,
+          people: people,
+          details: details,
+          totalCakePrice: totalSum,
+          breadSize: size,
+          breadFlavor: selectedFlavors,
+          filling: selectedFilling,
+          sizeFilling: sizeFilling,
+          customDesign: customDesign,
+          optionDesign: optionDesign,
+          numberSheets: numberSheets,
+          descriptionDesign: descriptionDesign,
+        };
     
-        // setSum(sum = null)
-        // setFloors(0.00);
-        // setFlavor('0');
-    
+        setAddOrder(prevOrders => [...prevOrders, newOrder]);
+
+        setFloors(0.00);
+        setType('0');
+        setDesign('0');
+        setPeople(0);
+        setDetails('');
+        setAddFlavor([1]);
+        setSize('0');
+        setSelectedFlavors([]);
+        setSelectedFilling('0');
+        setSizeFilling('0');
+        setCustomDesign('0');
+        setOptionDesign('0');
+        setNumberSheets(0);
+        setDescriptionDesign('');
+        setInputPrice(0.00);
+        setChongosDesign(false);
+        setClientCustom(false);
+        setSheetsState(false);
       };
-    
+
       const handleFloorsChange = (e) => {
         setFloors(e.target.value);
         setType('0');
@@ -184,7 +233,11 @@ function FloorsComponent() {
     
       const handlePeopleChange = (e) => {
         setPeople(Number(e.target.value))
-      }
+      };
+
+      const handleDetailsChange = (e) => {
+        setDetails(e.target.value)
+      };
     
       useEffect(() => {
         const typeValue = cakeType.find((value) => value.type === type);
@@ -216,11 +269,11 @@ function FloorsComponent() {
     
       const changeFlavorPrice = (price) => {
         setFlavorPrace(price)
-      }
+      };
     
       const changeSizePrice = (price) => {
         setSizePrice(price);
-      }
+      };
     
       const changeBasicFillingPrice = (price) => {
         setBasicFillingPrice(price);
@@ -232,7 +285,9 @@ function FloorsComponent() {
     
       const changeDesignPrice = (price) => {
         setCustomDesignPrice(price)
-      }
+      };
+
+      console.log(addOrder)
 
   return (
     <div className="container">
@@ -293,13 +348,14 @@ function FloorsComponent() {
                     type="text" 
                     name="floors" 
                     placeholder="especificaciones"
+                    onChange={handleDetailsChange}
                   />
                 </React.Fragment>
               )
             } else if (type === '+60 personas' && cake.type === '+60 personas') {
               return (
                 <input 
-                  className="form-control" 
+                  className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0" 
                   placeholder="# personas" 
                   type="number" 
                   name="people" 
@@ -334,16 +390,46 @@ function FloorsComponent() {
         }
 
         {/* Componente de sabor de pan */}
-        <FlavorComponent changeFlavorPrice={changeFlavorPrice} />
+        <FlavorComponent 
+          changeFlavorPrice={changeFlavorPrice} 
+          addFlavor={addFlavor}
+          setAddFlavor={setAddFlavor}
+          size={size}
+          setSize={setSize}
+          selectedFlavors={selectedFlavors}
+          setSelectedFlavors={setSelectedFlavors}
+        />
 
         {/* Componente de relleno */}
         <FillingComponent 
           changeSizePrice={changeSizePrice} 
           changeBasicFillingPrice={changeBasicFillingPrice}
+          selectedFilling={selectedFilling}
+          setSelectedFilling={setSelectedFilling}
+          sizeFilling={sizeFilling}
+          setSizeFilling={setSizeFilling}
         />
 
         {/* Componente de diseño */}
-        <DesignComponent changeDesignPrice={changeDesignPrice} />
+        <DesignComponent 
+          changeDesignPrice={changeDesignPrice} 
+          design={customDesign}
+          setDesign={setCustomDesign}
+          optionDesign={optionDesign}
+          setOptionDesign={setOptionDesign}
+          numberSheets={numberSheets}
+          setNumberSheets={setNumberSheets}
+          descriptionDesign={descriptionDesign}
+          setDescriptionDesign={setDescriptionDesign}
+          inputPrice={inputPrice}
+          setInputPrice={setInputPrice}
+          chongosDesign={chongosDesign}
+          setChongosDesign={setChongosDesign}
+          clientCustom={clientCustom}
+          setClientCustom={setClientCustom}
+          sheetsState={sheetsState}
+          setSheetsState={setSheetsState}
+        />
 
         <button 
           type="submit" 

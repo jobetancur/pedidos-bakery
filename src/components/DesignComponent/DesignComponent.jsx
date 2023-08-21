@@ -2,7 +2,24 @@ import React, { useEffect, useState } from 'react'
 import DesignElement from './DesignElement';
 import ChongosElement from './ChongosElement';
 
-function DesignComponent({ changeDesignPrice }) {
+function DesignComponent({ 
+    changeDesignPrice, 
+    design, 
+    setDesign, 
+    optionDesign, 
+    setOptionDesign,
+    numberSheets,
+    setNumberSheets,
+    setDescriptionDesign,
+    inputPrice,
+    setInputPrice,
+    chongosDesign,
+    setChongosDesign,
+    clientCustom,
+    setClientCustom,
+    sheetsState,
+    setSheetsState
+}) {
 
     const decopac = [
         {id: 1, type: '1/2 - 3/4 - 1', price: 30.00},
@@ -28,33 +45,31 @@ function DesignComponent({ changeDesignPrice }) {
         {id: 3, type: '3 o 6 naturales', price: 30.00},
     ]
 
-    const [ design, setDesign ] = useState('0');
     const [ designState, setDesignState ] = useState([]);
-    const [ chongosDesign, setChongosDesign ] = useState(false);
-    const [ optionDesign, setOptionDesign ] = useState('0');
-    const [ clientCustom, setClientCustom ] = useState(false);
-    const [ sheetsState, setSheetsState ] = useState(false);
-    const [ numberSheets, setNumberSheets ] = useState(0);
-    const [ inputPrice, setInputPrice ] = useState(0.00)
     // const [ designTypes, setDesignTypes ] = useState([]);
     const [ sum, setSum ] = useState({});
     // const [ totalSum, setTotalSum ] = useState();
 
-
     const handleDesignChange = (e) => {
         setNumberSheets(0)
+        setDescriptionDesign('')
         setInputPrice(0.00)
         setDesign(e.target.value)
     }
 
     const handleOptionChange = (e) => {
         setNumberSheets(0)
+        setDescriptionDesign('')
         setInputPrice(0.00)
         setOptionDesign(e.target.value)
     }
 
     const handleSheetsChange = (e) => {
         setNumberSheets(Number(e.target.value))
+    }
+
+    const handleDescriptionChange = (e) => {
+        setDescriptionDesign(e.target.value)
     }
 
     const handleInputPriceChange = (e) => {
@@ -173,6 +188,7 @@ function DesignComponent({ changeDesignPrice }) {
                                 name="chongo"
                                 type="text"
                                 placeholder="descripción"
+                                onChange={handleDescriptionChange}
                             />
                             <input 
                                 className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0"
