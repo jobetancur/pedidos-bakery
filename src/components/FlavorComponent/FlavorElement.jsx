@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange, setSelectedFlavors }) {
+function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange }) {
 
     const [localFlavor, setLocalFlavor] = useState(flavor);
 

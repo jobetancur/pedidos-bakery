@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react"
 import FillingElement from "./FillingElement";
 
-function FillingComponent({ changeSizePrice, changeBasicFillingPrice, selectedFilling, setSelectedFilling, sizeFilling, setSizeFilling }) {
+function FillingComponent({ 
+    changeSizePrice, 
+    changeBasicFillingPrice, 
+    selectedFilling, 
+    setSelectedFilling, 
+    sizeFilling, 
+    setSizeFilling 
+}) {
 
     const [ addFilling, setAddFilling ] = useState([1]);
     const [ selectedFillings, setSelectedFillings ] = useState([]);

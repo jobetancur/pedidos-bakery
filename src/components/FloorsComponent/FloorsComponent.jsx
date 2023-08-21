@@ -134,7 +134,12 @@ function FloorsComponent() {
           basicFilling: 0.00
         }
       );
+      const [ flavorPrice, setFlavorPrace ] = useState(0.00);
+      const [ sizePrice, setSizePrice ] = useState(0.00);
+      const [ basicFillingPrice, setBasicFillingPrice ] = useState(0.00);
+      const [ customDesignPrice, setCustomDesignPrice ] = useState(0.00);
       const [ totalSum, setTotalSum ] = useState();
+      // Floors states
       const [ floors, setFloors ] = useState(0.00);
       const [ type, setType ] = useState('0');
       const [ cakeType, setCakeType ] = useState([]);
@@ -142,23 +147,23 @@ function FloorsComponent() {
       const [ designTypes, setDesignTypes ] = useState([]);
       const [ people, setPeople ] = useState(0);
       const [ details, setDetails ] = useState('');
+      // Flavor state
       const [ addFlavor, setAddFlavor ] = useState([1]);
       const [ size, setSize ] = useState('0');
+      // Flavor state
       const [ selectedFlavors, setSelectedFlavors ] = useState([]);
       const [ selectedFilling, setSelectedFilling ] = useState('0');
       const [ sizeFilling, setSizeFilling ] = useState('0');
-      const [ customDesign, setCustomDesign ] = useState('0'); //!
-      const [ optionDesign, setOptionDesign ] = useState('0'); //!
-      const [ numberSheets, setNumberSheets ] = useState(0); //!
-      const [ descriptionDesign, setDescriptionDesign ] = useState(''); //!
-      const [ inputPrice, setInputPrice ] = useState(0.00); //!
+      // Custom design states
+      const [ customDesign, setCustomDesign ] = useState('0'); 
+      const [ optionDesign, setOptionDesign ] = useState('0'); 
+      const [ numberSheets, setNumberSheets ] = useState(0); 
+      const [ descriptionDesign, setDescriptionDesign ] = useState(''); 
+      const [ inputPrice, setInputPrice ] = useState(0.00); 
       const [ chongosDesign, setChongosDesign ] = useState(false);
       const [ clientCustom, setClientCustom ] = useState(false);
       const [ sheetsState, setSheetsState ] = useState(false);
-      const [ flavorPrice, setFlavorPrace ] = useState(0.00);
-      const [ sizePrice, setSizePrice ] = useState(0.00);
-      const [ basicFillingPrice, setBasicFillingPrice ] = useState(0.00);
-      const [ customDesignPrice, setCustomDesignPrice ] = useState(0.00);
+      // Total orders state
       const [ addOrder, setAddOrder ] = useState([]);
 
       const handleSubmit = (e) => {
@@ -287,7 +292,7 @@ function FloorsComponent() {
         setCustomDesignPrice(price)
       };
 
-      console.log(addOrder)
+      // console.log(addOrder)
 
   return (
     <div className="container">
