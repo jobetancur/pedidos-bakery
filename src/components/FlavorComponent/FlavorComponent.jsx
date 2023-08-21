@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import FlavorElement from "../FlavorComponent/FlavorElement";
 
-function FlavorComponent({ changeFlavorPrice }) {
+function FlavorComponent({ changeFlavorPrice, size, setSize, selectedFlavors, setSelectedFlavors, addFlavor, setAddFlavor }) {
 
     const flavorsList = [
         {id: 1, flavor: 'vainilla', price: 0.00},
@@ -12,11 +12,7 @@ function FlavorComponent({ changeFlavorPrice }) {
         {id: 6, flavor: 'red velvet por 1/4', price: 15.00},
         {id: 7, flavor: 'pan capacillo por 1/4', price: 10.00},
     ]
-
-    const [ addFlavor, setAddFlavor ] = useState([1]);
-    const [ size, setSize ] = useState('0');
-    const [selectedFlavors, setSelectedFlavors] = useState([]);
-
+    
     const handleSizeChange = (e) => {
         setSize(e.target.value)
     }
@@ -79,11 +75,11 @@ function FlavorComponent({ changeFlavorPrice }) {
   return (
     <>
         <hr className="mb-3 mt-5"/>
-        <h3 className="mb-3">Sabor del pan</h3>
+        <h3 className="mb-3 my-2 text-2xl">Sabor del pan</h3>
         
         <select 
             name="size" 
-            className="form-select mb-3"
+            className="form-select mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0"
             value={size}
             onChange={handleSizeChange}
         >
@@ -100,17 +96,20 @@ function FlavorComponent({ changeFlavorPrice }) {
                     flavorsList={flavorsList}
                     handleFlavorSelectChange={(e) => handleFlavorSelectChange(e, addFlavorIndex - 1)}
                     flavor={selectedFlavors[addFlavorIndex - 1] || '0'}
+                    setSelectedFlavors={setSelectedFlavors}
                 />
             ))
         }
         <button 
-            className="btn btn-success mr-3"
+            type="button"
+            className="bg-[#ED614A] py-2 px-4 rounded-3xl text-white"
             onClick={addNewFlavor}
         >
             Agregar sabor
         </button>
-        <button 
-            className="btn btn-warning m-3"
+        <button
+            type="button" 
+            className="m-3 bg-[#c2c0c0] py-2 px-4 rounded-3xl text-white"
             onClick={deleteFlavor}
         >
             Quitar sabor

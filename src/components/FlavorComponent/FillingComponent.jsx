@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 import FillingElement from "./FillingElement";
 
-function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
+function FillingComponent({ changeSizePrice, changeBasicFillingPrice, selectedFilling, setSelectedFilling, sizeFilling, setSizeFilling }) {
 
-    const [addFilling, setAddFilling] = useState([1]);
-    const [selectedFillings, setSelectedFillings] = useState([]);
-    const [fillingPrices, setFillingPrices] = useState({});
+    const [ addFilling, setAddFilling ] = useState([1]);
+    const [ selectedFillings, setSelectedFillings ] = useState([]);
+    const [ fillingPrices, setFillingPrices ] = useState({});
     const [ basicFillingPrice, setBasicFillingPrice ] = useState();
 
     const addNewFilling = () => {
         setAddFilling([ ...addFilling, addFilling.length + 1 ]);
         setSelectedFillings([...selectedFillings, '0']);
-    }
+    };
 
     const deleteFilling = () => {
         if (addFilling.length > 1) {
@@ -25,7 +25,7 @@ function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
             const { [lastKey]: removed, ...remainingPrices } = fillingPrices;
             setFillingPrices(remainingPrices);
         }
-    }
+    };
 
     const changeFillingPrice = (fillingIndex, price) => {
         setFillingPrices(prevPrices => ({ ...prevPrices, [fillingIndex]: price }));
@@ -35,13 +35,13 @@ function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
         const sumatoria = Object.values(fillingPrices).reduce((primero, segundo) => primero + segundo, 0);
         changeSizePrice(sumatoria, basicFillingPrice)
         changeBasicFillingPrice(basicFillingPrice)
-    }, [fillingPrices, basicFillingPrice])
+    }, [fillingPrices, basicFillingPrice]);
 
     // console.log(basicFillingPrice)
 
   return (
     <>
-        <h3 className="mb-3 mt-2">Relleno</h3>
+        <h3 className="mb-3 mt-2 text-2xl">Relleno</h3>
 
         {
             addFilling.map((addFillingIndex) => (
@@ -53,18 +53,24 @@ function FillingComponent({ changeSizePrice, changeBasicFillingPrice }) {
                     selectedFillings={selectedFillings}
                     setSelectedFillings={setSelectedFillings}
                     setBasicFillingPrice={setBasicFillingPrice}
+                    selectedFilling={selectedFilling}
+                    setSelectedFilling={setSelectedFilling}
+                    size={sizeFilling}
+                    setSize={setSizeFilling}
                 />
             ))
         }
 
         <button 
-            className="btn btn-success mr-3"
+            type="button"
+            className="bg-[#ED614A] py-2 px-4 rounded-3xl text-white"
             onClick={addNewFilling}
         >
             Agregar sabor
         </button>
         <button 
-            className="btn btn-warning m-3"
+            type="button"
+            className="m-3 bg-[#c2c0c0] py-2 px-4 rounded-3xl text-white"
             onClick={deleteFilling}
         >
             Quitar sabor

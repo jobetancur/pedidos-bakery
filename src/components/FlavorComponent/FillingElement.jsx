@@ -8,7 +8,11 @@ function FillingElement({
     setFillingPrices, 
     selectedFillings, 
     setSelectedFillings, 
-    setBasicFillingPrice 
+    setBasicFillingPrice,
+    selectedFilling,
+    setSelectedFilling,
+    size,
+    setSize
 }) {
     
     const fresa = [
@@ -25,14 +29,14 @@ function FillingElement({
             {id: 3, size: '3/4 de plancha', price: 70.00},
             {id: 4, size: '1 plancha', price: 90.00},
             {id: 5, size: '#8 redondo', price: 15.00},
-        ]
+        ];
     const chocoflan = [
             {id: 1, size: '1/4 de plancha', price: 30.00},
             {id: 2, size: '1/2 de plancha', price: 50.00},
             {id: 3, size: '3/4 de plancha', price: 70.00},
             {id: 4, size: '1 plancha', price: 90.00},
             {id: 5, size: '#8 redondo', price: 15.00},
-        ]
+        ];
     const rompope = [
             {id: 1, size: '1/4 de plancha', price: 20.00},
             {id: 2, size: '1/2 de plancha', price: 30.00},
@@ -40,13 +44,10 @@ function FillingElement({
             {id: 4, size: '1 plancha', price: 50.00},
             {id: 5, size: '#8 redondo', price: 10.00},
             {id: 6, size: '#6 redondo', price: 10.00},
-        ]
+        ];
     
-
-    const [ selectedFilling, setSelectedFilling ] = useState('0');
-    const [ sizeFilling, setSizeFilling ] = useState();
     const [ viewFillingSize, setViewFillingSize ] = useState(false);
-    const [ size, setSize ] = useState('0');
+    const [ sizeFilling, setSizeFilling ] = useState();
 
     const fillingChange = (e) => {
         setSelectedFilling(e.target.value);
@@ -107,7 +108,7 @@ function FillingElement({
         <>
             <select 
                 name={filling.toString()}
-                className="form-select mb-3"
+                className="form-select mb-2 w-full p-2 border rounded-2xl border-black border-solid text-black outline-0"
                 value={selectedFilling}
                 onChange={fillingChange}
             >
@@ -123,9 +124,9 @@ function FillingElement({
             {
                 viewFillingSize && (
                     <>
-                        <h4>Tamaños disponibles</h4>
+                        <h4 className="my-2 font-semibold">Tamaños disponibles</h4>
                         <select
-                            className="form-select mb-4"
+                            className="form-select mb-4 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0"
                             name="sizeFilling"
                             value={size}
                             onChange={handleSizeChange}

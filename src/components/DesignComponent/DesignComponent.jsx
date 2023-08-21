@@ -2,7 +2,24 @@ import React, { useEffect, useState } from 'react'
 import DesignElement from './DesignElement';
 import ChongosElement from './ChongosElement';
 
-function DesignComponent({ changeDesignPrice }) {
+function DesignComponent({ 
+    changeDesignPrice, 
+    design, 
+    setDesign, 
+    optionDesign, 
+    setOptionDesign,
+    numberSheets,
+    setNumberSheets,
+    setDescriptionDesign,
+    inputPrice,
+    setInputPrice,
+    chongosDesign,
+    setChongosDesign,
+    clientCustom,
+    setClientCustom,
+    sheetsState,
+    setSheetsState
+}) {
 
     const decopac = [
         {id: 1, type: '1/2 - 3/4 - 1', price: 30.00},
@@ -28,33 +45,31 @@ function DesignComponent({ changeDesignPrice }) {
         {id: 3, type: '3 o 6 naturales', price: 30.00},
     ]
 
-    const [ design, setDesign ] = useState('0');
     const [ designState, setDesignState ] = useState([]);
-    const [ chongosDesign, setChongosDesign ] = useState(false);
-    const [ optionDesign, setOptionDesign ] = useState('0');
-    const [ clientCustom, setClientCustom ] = useState(false);
-    const [ sheetsState, setSheetsState ] = useState(false);
-    const [ numberSheets, setNumberSheets ] = useState(0);
-    const [ inputPrice, setInputPrice ] = useState(0.00)
     // const [ designTypes, setDesignTypes ] = useState([]);
     const [ sum, setSum ] = useState({});
     // const [ totalSum, setTotalSum ] = useState();
 
-
     const handleDesignChange = (e) => {
         setNumberSheets(0)
+        setDescriptionDesign('')
         setInputPrice(0.00)
         setDesign(e.target.value)
     }
 
     const handleOptionChange = (e) => {
         setNumberSheets(0)
+        setDescriptionDesign('')
         setInputPrice(0.00)
         setOptionDesign(e.target.value)
     }
 
     const handleSheetsChange = (e) => {
         setNumberSheets(Number(e.target.value))
+    }
+
+    const handleDescriptionChange = (e) => {
+        setDescriptionDesign(e.target.value)
     }
 
     const handleInputPriceChange = (e) => {
@@ -122,10 +137,10 @@ function DesignComponent({ changeDesignPrice }) {
   return (
     <>  
         <hr className="mb-3 mt-5"/>
-        <h3 className="mb-3">Diseño</h3>
+        <h3 className="mb-3 text-2xl">Diseño</h3>
         <select 
+            className="form-select mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0"
             name="design" 
-            className="form-select mb-3"
             value={design}
             onChange={handleDesignChange}
         >
@@ -141,7 +156,7 @@ function DesignComponent({ changeDesignPrice }) {
             designState.length > 0  && 
                 <>
                     <select 
-                        className="form-select mb-3"
+                        className="form-select mb-3 w-full py-2 px-3 border rounded-2xl border-black border-solid text-black outline-0"
                         name="design"
                         value={optionDesign}
                         onChange={handleOptionChange}
@@ -162,20 +177,21 @@ function DesignComponent({ changeDesignPrice }) {
                         clientCustom &&
                         <>
                             <input 
-                                className="form-control mb-2"
+                                className="form-control mb-3 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0"
                                 type="number" 
                                 name="price" 
                                 placeholder="número de hojas"
                                 onChange={handleSheetsChange}
                             />
                             <textarea 
-                                className="form-control mb-2"
+                                className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0"
                                 name="chongo"
                                 type="text"
                                 placeholder="descripción"
+                                onChange={handleDescriptionChange}
                             />
                             <input 
-                                className="form-control mb-2"
+                                className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0"
                                 type="number" 
                                 name="price" 
                                 placeholder="$"
@@ -187,7 +203,7 @@ function DesignComponent({ changeDesignPrice }) {
                         sheetsState &&
                         <>
                             <input 
-                                className="form-control mb-2"
+                                className="form-control mb-2 w-full py-2 px-3 border rounded-2xl border-black border-solid outline-0"
                                 type="number" 
                                 name="price" 
                                 placeholder="número de hojas"

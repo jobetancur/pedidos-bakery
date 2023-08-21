@@ -1,8 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange }) {
+function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange, setSelectedFlavors }) {
 
     const [localFlavor, setLocalFlavor] = useState(flavor);
+
+    useEffect(() => {
+        if (flavor === "0") {
+          setLocalFlavor("0");
+        } else {
+          setLocalFlavor(flavor);
+        }
+      }, [flavor]);
 
     const handleLocalFlavorSelectChange = (e) => {
         setLocalFlavor(e.target.value);
@@ -12,7 +20,7 @@ function FlavorElement({ flavorsList, flavor, handleFlavorSelectChange }) {
   return (
     <>
         <select
-            className="form-select mb-2"
+            className="form-select mb-2 w-full p-2 border rounded-2xl border-black border-solid text-black outline-0"
             name="flavor"
             value={localFlavor}
             onChange={handleLocalFlavorSelectChange}
